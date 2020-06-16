@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import TodoList from "./Todo/TodoList"
 import Context from "./Todo/context"
 import Loader from './Loader'
-import Modal from "./Modal/Modal"
 
 const AddTodo = React.lazy(() => import('./Todo/AddTodo'))  // Ленивая загрузка (lazy loading)
 
@@ -15,18 +14,17 @@ function App() {
             .then(response => response.json())
             .then(todos => {
                 setTimeout(() => {
-                    let newTodo = todos.map(todo => {
+                    todos.map(todo => {
                         todo.name = todo.title
 
                         delete todo.title
-                        delete todo.userId
 
                         return todo
                     })
 
                     setTodos(todos)
                     setLoading(false)
-                }, 5000)
+                }, 1000)
             })
     }, [])
 
@@ -61,7 +59,7 @@ function App() {
       <Context.Provider value={{ removeTodo } }>
           <div className='wrapper'>
               <h1>React first project</h1>
-              <Modal />
+
               <React.Suspense fallback={<p>Loading...</p>}>
                   <AddTodo onCreate={addTodo} />
               </React.Suspense>

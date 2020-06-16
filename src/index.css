@@ -34,7 +34,14 @@ code {
   color: red;
   border-color: red;
 }
-
+.show {
+  color: blue;
+  margin-right: .4rem;
+}
+.show:hover {
+  color: darkblue;
+  border-color: blue;
+}
 .done {
   text-decoration: line-through;
 }

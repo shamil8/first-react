@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import Context from './context'
+import Modal from "../Modal/Modal"
 
 const styles = {
     li: {
@@ -37,9 +38,12 @@ function TodoItem({todo, index, onChaneCheckbox}) {
                     onChange={() => onChaneCheckbox(todo.id)}
                 />
                 <strong>{index + 1}. </strong>
-                <span className={classes.join(' ')}>{todo.name}</span>
+                <span style={{maxWidth: '300px'}} className={classes.join(' ')}>{todo.name}</span>
             </span>
-            <button className='rm' onClick={removeTodo.bind(null, todo.id)}>&times;</button>
+            <span>
+                <Modal todo={todo}/>
+                <button className='rm' onClick={removeTodo.bind(null, todo.id)}>&times;</button>
+            </span>
         </li>
     )                                       //() => removeTodo(todo.id)
 }

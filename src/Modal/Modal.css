@@ -12,9 +12,15 @@
 }
 
 .modal-body {
+    position: relative;
     padding: 2rem;
     width: 400px;
     border-radius: 5px;
     background: #fff;
     height: 200px;
+}
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
